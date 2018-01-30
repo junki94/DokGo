@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 
 
 import com.dokgo.junkiproj.Adapter.MyAdapter;
@@ -25,9 +24,10 @@ public class ListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        recyclerView = findViewById(R.id.list_recycle);
+        setContentView(R.layout.activity_list);
+        recyclerView = (RecyclerView)findViewById(R.id.list_recycle);
         adapter = new MyAdapter(getDataFromDB());
-        layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL,false);
+        layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
     }
