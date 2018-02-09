@@ -1,5 +1,6 @@
 package com.dokgo.junkiproj.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -60,5 +61,12 @@ public class ListActivity extends AppCompatActivity {
         finalData.add(listViewData);
 
         return finalData;
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(ListActivity.this,MainActivity.class);
+        startActivity(i);
+        finish();
     }
 }
