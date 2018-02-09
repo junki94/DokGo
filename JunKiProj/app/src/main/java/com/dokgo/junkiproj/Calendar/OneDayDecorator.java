@@ -31,9 +31,9 @@ public class OneDayDecorator implements DayViewDecorator {
 
     @Override
     public void decorate(DayViewFacade view) {
-        view.addSpan(new StyleSpan(Typeface.BOLD));
-        view.addSpan(new RelativeSizeSpan(1.4f));
-        view.addSpan(new ForegroundColorSpan(Color.GREEN));
+        view.addSpan(new StyleSpan(Typeface.BOLD)); // 글씨체
+        view.addSpan(new RelativeSizeSpan(1.4f)); // 글자 크기
+        view.addSpan(new ForegroundColorSpan(Color.GREEN)); // 날짜 색깔 바꾸는 곳
     }
 
     public void setDate(Date date) {

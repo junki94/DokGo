@@ -6,14 +6,22 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Toast;
 
 import com.dokgo.junkiproj.Adapter.MyAdapter;
+import com.dokgo.junkiproj.Calendar.OneDayDecorator;
+import com.dokgo.junkiproj.Calendar.SaturdayDecorator;
+import com.dokgo.junkiproj.Calendar.SundayDecorator;
 import com.dokgo.junkiproj.Data.CalData;
 import com.dokgo.junkiproj.R;
+import com.prolificinteractive.materialcalendarview.CalendarDay;
+import com.prolificinteractive.materialcalendarview.CalendarMode;
 import com.prolificinteractive.materialcalendarview.DayViewDecorator;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 
 public class CalActivity extends AppCompatActivity{
@@ -32,20 +40,23 @@ public class CalActivity extends AppCompatActivity{
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
-//        materialCalendarView = (MaterialCalendarView)findViewById(R.id.calendarView);
-//
-//        materialCalendarView.state().edit()
-//                .setFirstDayOfWeek(Calendar.SUNDAY)
-//                .setMinimumDate(CalendarDay.from(2017,0,1))
-//                .setMaximumDate(CalendarDay.from(2030,11,30))
-//                .setCalendarDisplayMode(CalendarMode.MONTHS)
-//                .commit();
-//
-//        materialCalendarView.addDecorators(
-//                new SundayDecorator(),
-//                new SaturdayDecorator(),
-//                oneDayDecorator);
+        materialCalendarView = (MaterialCalendarView)findViewById(R.id.calendarView);
+        oneDayDecorator = new OneDayDecorator();
+        materialCalendarView.state().edit()
+                .setFirstDayOfWeek(Calendar.SUNDAY)
+                .setMinimumDate(CalendarDay.from(2017,0,1))
+                .setMaximumDate(CalendarDay.from(2030,11,30))
+                .setCalendarDisplayMode(CalendarMode.MONTHS)
+                .commit();
 
+        materialCalendarView.addDecorators(
+                new SundayDecorator(),
+                new SaturdayDecorator(),
+                oneDayDecorator);
+
+//        String tmp = materialCalendarView.getSelectedDate().getDate().toString();
+//        Toast.makeText(getApplicationContext(),tmp,Toast.LENGTH_SHORT).show();
+        //TODO 달력 눌렀을때 눌른 날짜 토스트 띄우기
     }
     private ArrayList<CalData> getDataFromDB(){
         ArrayList<CalData> finalData = new ArrayList<CalData>();

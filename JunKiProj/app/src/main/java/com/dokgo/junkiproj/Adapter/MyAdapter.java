@@ -53,7 +53,8 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         switch (type){
             case 0:  final ListHolder listHolder = (ListHolder)holder;
-                listHolder.name.setText(SharedData.get(position).getName());
+                final String name =SharedData.get(position).getName();
+                listHolder.name.setText(name);
                 listHolder.addr.setText(SharedData.get(position).getAddr());
                 // TODO 홀더에서 이미지뷰 가져온다음 노인 이름에 매치해서 이미지 설정
 //        if(노인이름)
@@ -62,6 +63,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(listHolder.parent.getContext(), DetailActivity.class);
+                        intent.putExtra("name",name);
                         listHolder.parent.getContext().startActivity(intent);
                         ((Activity)(listHolder.parent.getContext())).finish();
                     }
@@ -77,6 +79,14 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     @Override
     public int getItemCount() {
-        return SharedData.size();
+
+        switch (type){
+            case 0:
+                return SharedData.size();
+            case 1:
+                return SharedData1.size();
+            default:
+                return 0;
+        }
     }
 }
