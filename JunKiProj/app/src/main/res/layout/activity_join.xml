@@ -4,17 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <include layout="@layout/toolbar_layout4"
+        android:id="@+id/include" />
 
     <EditText
         android:id="@+id/je1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/je2"
-        android:layout_marginTop="36dp"
+        android:layout_below="@+id/include"
+        android:layout_marginTop="52dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="108dp"
-        tools:layout_editor_absoluteY="118dp" />
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/je2"
@@ -22,20 +23,17 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/je1"
-        android:layout_marginEnd="59dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginTop="31dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="108dp"
-        tools:layout_editor_absoluteY="286dp" />
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/je3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/je2"
-        android:layout_below="@+id/je2"
-        android:layout_marginTop="28dp"
+        android:layout_centerVertical="true"
         android:ems="10"
         android:inputType="textPersonName"
         tools:layout_editor_absoluteX="108dp"
@@ -45,9 +43,9 @@
         android:id="@+id/je4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/je3"
         android:layout_below="@+id/je3"
-        android:layout_marginTop="37dp"
+        android:layout_marginTop="11dp"
+        android:layout_toEndOf="@+id/jtxt1"
         android:ems="10"
         android:inputType="textPersonName"
         tools:layout_editor_absoluteX="108dp"
@@ -59,7 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/je4"
         android:layout_below="@+id/je4"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="11dp"
         android:ems="10"
         android:inputType="textPersonName"
         tools:layout_editor_absoluteX="108dp"
@@ -69,8 +67,9 @@
         android:id="@+id/jtxt1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/je2"
-        android:layout_marginEnd="23dp"
+        android:layout_alignBaseline="@+id/je1"
+        android:layout_alignBottom="@+id/je1"
+        android:layout_marginEnd="21dp"
         android:layout_toStartOf="@+id/je1"
         android:text="Name" />
 
@@ -78,6 +77,7 @@
         android:id="@+id/jtxt2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/je2"
         android:layout_alignBottom="@+id/je2"
         android:layout_alignStart="@+id/jtxt1"
         android:text="ID" />
@@ -86,8 +86,8 @@
         android:id="@+id/jtxt3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/je3"
         android:layout_alignStart="@+id/jtxt2"
+        android:layout_centerVertical="true"
         android:text="Pass" />
 
     <TextView
@@ -112,10 +112,9 @@
         android:id="@+id/jbutton1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/je5"
-        android:layout_below="@+id/je5"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="39dp"
         android:onClick="onButtonJOIN"
         android:text="회원 가입" />
 </RelativeLayout>

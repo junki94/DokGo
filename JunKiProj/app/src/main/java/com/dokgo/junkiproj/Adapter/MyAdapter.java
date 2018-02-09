@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.dokgo.junkiproj.Data.ListData;
-import com.dokgo.junkiproj.DetailActivity;
+import com.dokgo.junkiproj.Activity.DetailActivity;
 import com.dokgo.junkiproj.Holder.ListHolder;
 import com.dokgo.junkiproj.R;
 

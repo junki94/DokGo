@@ -7,24 +7,16 @@
     <ImageView
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:id="@+id/returnImg2"
+        android:id="@+id/toolbar_icon"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@mipmap/ic_launcher"/>
     <TextView
-        android:id="@+id/toolbar_title2"
+        android:id="@+id/toolbar_title"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginStart="10dp"
-        android:text="이름"
+        android:layout_marginStart="5dp"
+        android:text="설정"
         android:textSize="30dp"
         android:gravity="center"/>
-    <ImageView
-        android:id="@+id/modifyImg"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:src="@mipmap/ic_launcher"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="200dp"/>
-
 </LinearLayout>
