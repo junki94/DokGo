@@ -81,43 +81,32 @@ public class MainActivity extends AppCompatActivity {
         img1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                img1.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(MainActivity.this, SettingActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                });
+                Intent intent = new Intent(MainActivity.this, ListActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 
         img2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                img2.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(MainActivity.this, CalActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                });
+                Intent intent = new Intent(MainActivity.this,CalActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 
         img3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                img3.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(MainActivity.this,ListActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                });
+                Intent intent = new Intent(MainActivity.this, SettingActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 }

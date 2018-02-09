@@ -35,4 +35,10 @@ public class DetailActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(DetailActivity.this,ListActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }
