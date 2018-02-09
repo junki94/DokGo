@@ -1,17 +1,28 @@
 package com.dokgo.junkiproj.Activity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 
 import com.dokgo.junkiproj.Adapter.MyAdapter;
 import com.dokgo.junkiproj.Data.ListData;
 import com.dokgo.junkiproj.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 /**
@@ -28,12 +39,49 @@ public class ListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
         recyclerView = (RecyclerView)findViewById(R.id.list_recycle);
-        adapter = new MyAdapter(getDataFromDB());
-        layoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
+        Task task = new Task();
+        task.execute("http://ec2-18-220-255-40.us-east-2.compute.amazonaws.com/senior.php");
+
     }
-    private ArrayList<ListData> getDataFromDB(){
+    private class Task extends AsyncTask<String,Void,Void>{
+        String str="null";
+        @Override
+        protected Void doInBackground(String... strings) {
+            try {
+                URL url = new URL(strings[0]);
+                HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+                conn.setRequestMethod("POST"); // URL 요청에 대한 메소드 설정 : POST.
+                conn.setRequestProperty("Accept-Charset", "UTF-8"); // Accept-Charset 설정.
+                conn.setRequestProperty("Context_Type", "application/x-www-form-urlencoded;cahrset=UTF-8");
+                if(conn.getResponseCode() == conn.HTTP_OK){
+                    Log.e("http","ok");
+                    InputStreamReader tmp = new InputStreamReader(conn.getInputStream(),"UTF-8");
+                    BufferedReader br = new BufferedReader(tmp);
+                    StringBuffer buffer = new StringBuffer();
+                    while ((str = br.readLine()) != null) {
+                        buffer.append(str);
+                    }
+                    br.close();
+                    tmp.close();
+                }
+            }catch (MalformedURLException e){
+             return null;
+            }catch (IOException e){
+                return null;
+            }
+            return null;
+        }
+        @Override
+        protected void onPostExecute(Void aVoid) {
+
+            adapter = new MyAdapter(getDataFromDB(this.str));
+            layoutManager = new LinearLayoutManager(getApplicationContext());
+            recyclerView.setLayoutManager(layoutManager);
+            recyclerView.setAdapter(adapter);
+    }
+    }
+    private ArrayList<ListData> getDataFromDB(String str){
+        Log.e("내용",str);
         ArrayList<ListData> finalData = new ArrayList<ListData>();
         ListData listViewData = new ListData();
         listViewData.setName("송준기");
