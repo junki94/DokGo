@@ -34,4 +34,11 @@ public class ModifyActivity extends AppCompatActivity{
         });
 
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(ModifyActivity.this,DetailActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }

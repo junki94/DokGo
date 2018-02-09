@@ -1,5 +1,6 @@
 package com.dokgo.junkiproj.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -34,5 +35,12 @@ public class CalActivity extends AppCompatActivity{
 //                new SaturdayDecorator(),
 //                oneDayDecorator);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(CalActivity.this,MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
